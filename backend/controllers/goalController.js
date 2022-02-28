@@ -9,7 +9,12 @@ const getGoals = (req, res, next) => {
 //@route    POST /api/goals
 //@access   Private
 const setGoal = (req, res, next) => {
-    console.log(req.body)
+   //check for goal text avilable
+   if(!req.body.goal){
+    res.status(400)
+    throw new Error('goal field missing in body request')
+   }
+
   res.status(200).json({ message: "Set goals" });
 };
 
